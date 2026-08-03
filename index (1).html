@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eleven Pearl — Coming Soon</title>
+<meta name="description" content="Eleven Pearl. Considered lighting, arriving soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #16140f;
+    --ink-deep: #100e0a;
+    --panel: #1d1a13;
+    --pearl: #ece6d7;
+    --pearl-dim: #cdc6b3;
+    --bronze: #8e8167;
+    --bronze-soft: #6d624c;
+    --bronze-light: #b7a688;
+    --muted: #948a76;
+    --hairline: rgba(236,230,215,0.16);
+    --ease: cubic-bezier(.22,.68,.29,1);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ height:100%; }
+  body{
+    margin:0;
+    min-height:100%;
+    background:
+      radial-gradient(60% 50% at 50% 8%, rgba(142,129,103,0.10), transparent 60%),
+      var(--ink);
+    color: var(--pearl);
+    font-family: 'Jost', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* subtle grain for warmth */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 5;
+  }
+
+  .stage{
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8vh 6vw 6vh;
+  }
+
+  .wrap{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ambient glow behind the mark, like a fixture switched on */
+  .glow{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 640px;
+    height: 640px;
+    max-width: 140vw;
+    max-height: 140vw;
+    transform: translate(-50%, -58%);
+    background: radial-gradient(circle at 50% 42%,
+      rgba(236,230,215,0.16) 0%,
+      rgba(142,129,103,0.14) 32%,
+      rgba(142,129,103,0.05) 55%,
+      transparent 72%);
+    filter: blur(6px);
+    z-index: 1;
+    animation: breathe 7s ease-in-out infinite;
+    animation-delay: 1.4s;
+  }
+
+  @keyframes breathe{
+    0%, 100%{ opacity: 0.75; transform: translate(-50%, -58%) scale(1); }
+    50%{ opacity: 1; transform: translate(-50%, -58%) scale(1.05); }
+  }
+
+  .mark{
+    position: relative;
+    width: clamp(120px, 28vw, 168px);
+    filter: drop-shadow(0 0 0 rgba(236,230,215,0));
+    opacity: 0;
+    animation: power-on 2.1s var(--ease) forwards;
+  }
+  .mark img{
+    display:block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* lamp switched on: two quick flickers, then settle into a steady glow */
+  @keyframes power-on{
+    0%   { opacity: 0;    filter: drop-shadow(0 0 0 rgba(236,230,215,0)); }
+    6%   { opacity: 0.55; filter: drop-shadow(0 0 10px rgba(236,230,215,0.25)); }
+    11%  { opacity: 0.08; filter: drop-shadow(0 0 0 rgba(236,230,215,0)); }
+    18%  { opacity: 0.75; filter: drop-shadow(0 0 14px rgba(236,230,215,0.3)); }
+    24%  { opacity: 0.15; filter: drop-shadow(0 0 0 rgba(236,230,215,0)); }
+    40%  { opacity: 1;    filter: drop-shadow(0 0 22px rgba(236,230,215,0.38)); }
+    100% { opacity: 1;    filter: drop-shadow(0 0 30px rgba(236,230,215,0.22)); }
+  }
+
+  .wordmark{
+    margin-top: 34px;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(26px, 4.6vw, 34px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pearl);
+    opacity: 0;
+    animation: rise 0.9s var(--ease) forwards;
+    animation-delay: 1.65s;
+  }
+
+  .tagline{
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    opacity: 0;
+    animation: rise 0.9s var(--ease) forwards;
+    animation-delay: 1.8s;
+  }
+
+  @keyframes rise{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  .filament{
+    width: 1px;
+    height: 46px;
+    margin: 30px auto 0;
+    background: linear-gradient(to bottom, transparent, var(--hairline) 40%, var(--hairline) 60%, transparent);
+    opacity: 0;
+    animation: rise 0.9s var(--ease) forwards;
+    animation-delay: 1.95s;
+  }
+
+  form{
+    margin-top: 30px;
+    width: 100%;
+    max-width: 340px;
+    opacity: 0;
+    animation: rise 0.9s var(--ease) forwards;
+    animation-delay: 2.1s;
+  }
+
+  .field{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 10px;
+    transition: border-color 0.3s var(--ease);
+  }
+  .field:focus-within{
+    border-color: var(--bronze-light);
+  }
+
+  input[type="email"]{
+    flex: 1;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--pearl);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    padding: 6px 4px;
+  }
+  input[type="email"]::placeholder{
+    color: var(--muted);
+  }
+
+  button{
+    background: transparent;
+    border: 0;
+    color: var(--pearl-dim);
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 6px 4px 6px 14px;
+    white-space: nowrap;
+    transition: color 0.25s var(--ease), letter-spacing 0.25s var(--ease);
+  }
+  button:hover{
+    color: var(--pearl);
+    letter-spacing: 0.19em;
+  }
+  button:focus-visible, input:focus-visible{
+    outline: 1px solid var(--bronze-light);
+    outline-offset: 3px;
+  }
+
+  .note{
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--bronze-soft);
+    min-height: 14px;
+  }
+  .note.is-success{ color: var(--bronze-light); }
+
+  footer{
+    position: absolute;
+    bottom: 26px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bronze-soft);
+    opacity: 0;
+    animation: rise 1s var(--ease) forwards;
+    animation-delay: 2.4s;
+  }
+  footer a{
+    color: var(--bronze-soft);
+    text-decoration: none;
+    transition: color 0.25s var(--ease);
+  }
+  footer a:hover{ color: var(--pearl-dim); }
+
+  @media (max-width: 420px){
+    .stage{ padding: 10vh 8vw 8vh; }
+    footer{ gap: 16px; font-size: 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .mark, .wordmark, .tagline, .filament, form, footer{
+      animation: none !important;
+      opacity: 1 !important;
+    }
+    .glow{ animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <main class="stage">
+    <div class="glow" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="mark">
+        <img src="assets/EP_color_LOGO.png" alt="Eleven Pearl">
+      </div>
+
+      <h1 class="wordmark">Eleven&nbsp;Pearl</h1>
+      <p class="tagline">Considered lighting. Arriving soon.</p>
+
+      <div class="filament" aria-hidden="true"></div>
+
+      <form id="notify-form" novalidate>
+        <div class="field">
+          <input type="email" id="email" placeholder="Your email" autocomplete="email" required aria-label="Email address">
+          <button type="submit">Notify me</button>
+        </div>
+        <p class="note" id="form-note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <footer>
+      <span>&copy; <span id="year"></span> Eleven Pearl</span>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+    </footer>
+  </main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('notify-form');
+  const note = document.getElementById('form-note');
+  const emailInput = document.getElementById('email');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const value = emailInput.value.trim();
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+    if (!isValid) {
+      note.textContent = 'Enter a valid email address.';
+      note.classList.remove('is-success');
+      return;
+    }
+
+    // Hook your email provider here (Mailchimp, Klaviyo, a form endpoint, etc.)
+    // Example: fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email: value }) })
+
+    note.textContent = "You're on the list — we'll write when the lights come on.";
+    note.classList.add('is-success');
+    emailInput.value = '';
+    emailInput.blur();
+  });
+</script>
+
+</body>
+</html>
