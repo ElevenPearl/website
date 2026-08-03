@@ -78,12 +78,13 @@
     @media (max-width:900px) { .hero { grid-template-columns:1fr; gap:34px; padding:78px 0 70px; } .hero-note { max-width:470px; } .document-grid { grid-template-columns:repeat(2,1fr); } .document { min-height:235px; } .details { gap:48px; } .eleven-grid { grid-template-columns:repeat(2,1fr); } .eleven-grid .collection-card:last-child { grid-column:span 2; } .zivo-grid { grid-template-columns:repeat(2,1fr); } .project-grid { grid-template-columns:1.2fr 1fr; } .project-card:first-child { grid-row:span 2; } .project-card:last-child { display:none; } .about-preview { gap:48px; } }
     @media (max-width:720px) { .shell { width:min(100% - 36px, 1120px); } .hero,.details { grid-template-columns:1fr; gap:38px; } .hero { padding:74px 0 64px; } .hero-visual { min-height:620px; background-position:center; } .hero-content { padding:120px 0 68px; } .collections,.projects { padding:76px 0; } .collections-intro { display:block; margin-bottom:42px; } .collections-intro p:last-child { margin-top:15px; } .brand-collection-group + .brand-collection-group { margin-top:76px; } .collection-brand-head { grid-template-columns:1fr; gap:16px; margin-bottom:25px; } .zivo-group .collection-brand-head { margin-bottom:30px; } .collection-grid,.project-grid { grid-template-columns:1fr; } .eleven-grid .collection-card:last-child { grid-column:auto; } .collection-card,.zivo-grid .collection-card { min-height:320px; } .zivo-grid .collection-card h3 { font-size:31px; } .project-grid { grid-template-rows:repeat(4,250px); } .project-card:first-child { grid-row:auto; } .project-card:last-child { display:block; } .section-head { display:block; } .section-copy { margin-top:17px; } .document-grid { grid-template-columns:1fr; } .document { min-height:210px; } .documents { padding:76px 0; } .about-preview { grid-template-columns:1fr; gap:22px; padding:78px 0; } .details { gap:30px; padding:70px 0; } .footer-inner { display:block; } .footer-inner span:last-child { display:block; margin-top:8px; } }
     @media (max-width:480px) { .nav { padding:14px 0; } .brand { gap:6px; font-size:19px; } .brand-logo-frame { width:27px; height:43px; flex-basis:27px; } .nav-links { gap:10px; } .nav-link { font-size:9px; letter-spacing:.05em; } .lamp-switcher { width:30px; height:30px; } .hero-visual { min-height:570px; } .hero-content { padding-top:90px; } .hero-content h1 { font-size:48px; } .hero-actions { flex-direction:column; align-items:flex-start; } .hero-button { width:100%; } .section-head { margin-bottom:27px; } .series-brand { gap:10px; } .series-logo-panel.eleven-panel { width:66px; height:76px; } .series-logo.eleven { width:48px; height:72px; } .series-logo-panel.zivo-panel { width:70px; height:64px; } .series-logo.zivo { width:72px; height:72px; } .document { padding:24px; } .document h3 { font-size:27px; } .temperature-toast { top:76px; width:max-content; max-width:calc(100% - 36px); } .whatsapp { right:16px; bottom:16px; padding:13px; } .whatsapp span { display:none; } }
+    @media (prefers-reduced-motion:no-preference){.scroll-reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity .64s cubic-bezier(.2,.6,.2,1),transform .64s cubic-bezier(.2,.6,.2,1),clip-path .72s cubic-bezier(.2,.6,.2,1);transition-delay:var(--reveal-delay,0ms);will-change:opacity,transform}.scroll-reveal.is-visible{opacity:1;transform:translate3d(0,0,0)}.scroll-reveal.image-reveal{clip-path:inset(0 0 12% 0)}.scroll-reveal.image-reveal.is-visible{clip-path:inset(0)}.hero-content>*{animation:ep-intro .72s cubic-bezier(.2,.6,.2,1) both}.hero-content>*:nth-child(2){animation-delay:.08s}.hero-content>*:nth-child(3){animation-delay:.16s}.hero-content>*:nth-child(4){animation-delay:.24s}@keyframes ep-intro{from{opacity:0;transform:translate3d(0,16px,0)}to{opacity:1;transform:translate3d(0,0,0)}}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll-reveal{transition:none!important;animation:none!important}}
   </style>
 </head>
 <body>
   <header class="shell nav">
     <a class="brand" href="#top"><span class="brand-logo-frame"><img class="brand-logo" src="eleven-pearl-logo.png" alt=""></span><span>Eleven <em>Pearl</em></span></a>
-    <div class="nav-links"><a class="nav-link" href="about-us.html">About Us</a><a class="nav-link" href="#contact">Contact</a><button class="lamp-switcher" id="lampSwitcher" type="button" aria-label="Change colour temperature" title="Change colour temperature"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M9.7 21h4.6M8.6 14.6A6.5 6.5 0 1 1 15.4 14.6c-.75.6-1.18 1.44-1.18 2.4H9.78c0-.96-.43-1.8-1.18-2.4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    <div class="nav-links"><a class="nav-link" href="about-us.html">About Us</a><a class="nav-link" href="contact.html">Contact</a><button class="lamp-switcher" id="lampSwitcher" type="button" aria-label="Change colour temperature" title="Change colour temperature"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M9.7 21h4.6M8.6 14.6A6.5 6.5 0 1 1 15.4 14.6c-.75.6-1.18 1.44-1.18 2.4H9.78c0-.96-.43-1.8-1.18-2.4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   </header>
   <div class="temperature-toast" id="temperatureToast" role="status" aria-live="polite"><strong id="temperatureName"></strong><span id="temperatureCct"></span></div>
 
@@ -92,35 +93,35 @@
       <div class="shell hero-content">
         <p class="eyebrow">The lighting collection</p>
         <h1>Light for <em>considered</em> spaces.</h1>
-        <p class="intro">Eleven creates refined lighting pieces that bring warmth, atmosphere and clarity to the spaces we live in.</p>
+        <p class="intro">Lighting for the rooms where life, work and hospitality come together.</p>
         <div class="hero-actions"><a class="hero-button primary" href="#collections">Explore collection</a><a class="hero-button" href="#projects">View projects</a></div>
       </div>
     </section>
 
     <section class="shell collections" id="collections">
-      <div class="collections-intro"><div><p class="eyebrow">Explore collections</p><h2>Lighting with a sense of place.</h2></div></div>
+      <div class="collections-intro"><div><p class="eyebrow">Explore collections</p><h2>Find the right system.</h2></div></div>
 
       <div class="brand-collection-group">
-        <div class="collection-brand-head"><div><p class="eyebrow">ELEVEN PEARL</p><h3>Professional Lighting Solutions</h3></div><p>Reliable, efficient lighting solutions designed for residential, commercial, and everyday architectural applications.</p></div>
+        <div class="collection-brand-head"><div><p class="eyebrow">ELEVEN PEARL</p><h3>Professional Lighting Solutions</h3></div><p>Track lighting, touch controls and efficient COBs for everyday projects.</p></div>
         <div class="collection-grid eleven-grid">
-          <a class="collection-card" href="./pdfs/track-light.pdf" style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1100&q=82')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Track<br>Lights</h3><p>Adaptable light for evolving interiors and displays.</p></div></a>
-          <a class="collection-card" href="./pdfs/touch-switches.pdf" style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=82')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Touch<br>Switches</h3><p>Thoughtful control for a more considered lighting experience.</p></div></a>
-          <a class="collection-card" href="./pdfs/eco-cobs.pdf" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=82')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>ECO COB<br>Collection</h3><p>Efficient accent lighting for everyday architectural spaces.</p></div></a>
+          <a class="collection-card" href="./pdfs/track-light.pdf" style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1100&q=82')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Track<br>Lights</h3><p>Directional light for retail, residences and workspaces.</p></div></a>
+          <a class="collection-card" href="./pdfs/touch-switches.pdf" style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=82')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Touch<br>Switches</h3><p>Simple control for everyday lighting scenes.</p></div></a>
+          <a class="collection-card" href="./pdfs/eco-cobs.pdf" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=82')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>ECO COB<br>Collection</h3><p>Practical spotlighting for routine project needs.</p></div></a>
         </div>
       </div>
 
       <div class="brand-collection-group zivo-group">
-        <div class="collection-brand-head"><div><p class="eyebrow">ZIVO</p><h3>Premium Architectural Collection</h3></div><p>A curated collection of premium architectural lighting systems crafted for luxury interiors and modern spaces.</p></div>
+        <div class="collection-brand-head"><div><p class="eyebrow">ZIVO</p><h3>Premium Architectural Collection</h3></div><p>Magnetic, gypsum and architectural systems for interior-led spaces.</p></div>
         <div class="collection-grid zivo-grid">
-          <a class="collection-card" href="./pdfs/flexible-magnetic.pdf" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=84')"><div class="collection-card-content"><small>Zivo</small><h3>Flexible Magnetic<br>Track</h3><p>Flexible systems designed to follow the architecture.</p></div></a>
-          <a class="collection-card" href="./pdfs/architectural-cob.pdf" style="background-image:url('https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=1400&q=84')"><div class="collection-card-content"><small>Zivo</small><h3>Architectural<br>Lighting</h3><p>Focused illumination with a refined, minimal presence.</p></div></a>
-          <a class="collection-card" href="./pdfs/gypsum-light.pdf" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=84')"><div class="collection-card-content"><small>Zivo</small><h3>Gypsum<br>Lighting</h3><p>Quiet architectural light that feels part of the surface.</p></div></a>
-          <a class="collection-card" href="./pdfs/belt-link.pdf" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=84')"><div class="collection-card-content"><small>Zivo</small><h3>Belt<br>Link</h3><p>A linear language for spaces with character.</p></div></a>
+          <a class="collection-card" href="./pdfs/flexible-magnetic.pdf" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=84')"><div class="collection-card-content"><small>Zivo</small><h3>Flexible Magnetic<br>Track</h3><p>A modular track system for changing layouts.</p></div></a>
+          <a class="collection-card" href="./pdfs/architectural-cob.pdf" style="background-image:url('images/architectural-light-cover.png')"><div class="collection-card-content"><small>Zivo</small><h3>Architectural<br>COB</h3><p>Integrated fixtures for focused illumination.</p></div></a>
+          <a class="collection-card" href="./pdfs/gypsum-light.pdf" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=84')"><div class="collection-card-content"><small>Zivo</small><h3>Gypsum<br>Lighting</h3><p>Trimless lighting for clean ceilings and walls.</p></div></a>
+          <a class="collection-card" href="./pdfs/belt-link.pdf" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=84')"><div class="collection-card-content"><small>Zivo</small><h3>Belt<br>Link</h3><p>Linear connections for structured interiors.</p></div></a>
         </div>
       </div>
     </section>
 
-    <section class="projects" id="projects"><div class="shell"><p class="eyebrow">Inspiration</p><h2>Spaces shaped by light.</h2><div class="project-grid">
+    <section class="projects" id="projects"><div class="shell"><p class="eyebrow">Projects</p><h2>Light in context.</h2><div class="project-grid">
       <article class="project-card" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85')"><span>Luxury Villa</span></article>
       <article class="project-card" style="background-image:url('https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=1000&q=82')"><span>Restaurant</span></article>
       <article class="project-card" style="background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=82')"><span>Office</span></article>
@@ -128,7 +129,7 @@
       <article class="project-card" style="background-image:url('https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=1000&q=82')"><span>Retail</span></article>
     </div></div></section>
 
-    <section class="shell about-preview"><div><p class="eyebrow">Eleven Pearl</p><h2>Architectural light, shaped with purpose.</h2></div><div class="about-preview-copy">Established in Surat in 2003, Eleven Pearl brings together modern lighting technology, dependable performance and a precise design language for projects across India.<br><a class="text-link" href="about-us.html">Read our story <span>→</span></a></div></section>
+    <section class="shell about-preview"><div><p class="eyebrow">Eleven Pearl</p><h2>A Surat lighting company, since 2003.</h2></div><div class="about-preview-copy">From a local beginning to projects across India, our work has grown through long-term relationships and dependable service.<br><a class="text-link" href="about-us.html">Read our story <span>→</span></a></div></section>
 
     <section class="documents" id="catalogues">
       <div class="shell">
@@ -157,19 +158,6 @@
       </div>
     </section>
 
-    <section class="shell details" id="contact">
-      <div>
-        <p class="eyebrow">Eleven Pearl</p>
-        <h2>At your service.</h2>
-        <p>For wholesale, specification support, bespoke projects or product care, our team would be delighted to hear from you.</p>
-        <a class="service" href="https://elevenpearl.github.io/track-service-request/">Make a service request <span>→</span></a>
-      </div>
-      <div class="contact-list">
-        <div class="contact-item"><small>General enquiries</small><a href="mailto:elevenpearllighting@gmail.com">elevenpearllighting@gmail.com</a></div>
-        <div class="contact-item"><small>Phone</small><a href="tel:+919898614926">+91 98986 14926</a><br><a href="tel:+919783814926">+91 97838 14926</a></div>
-        <div class="contact-item"><small>Address</small><address>Plot No. 35, Shri Dwarkesh Industrial Society,<br>Udhana - Magdalla Rd, Nr. Navjivan Circle,<br>Surat, Gujarat 395017</address></div>
-      </div>
-    </section>
   </main>
 
   <footer><div class="shell footer-inner"><span>© 2026 Eleven Pearl</span><span>Considered lighting for considered spaces. <a class="instagram-link" href="https://www.instagram.com/eleven._pearl/" target="_blank" rel="noopener" aria-label="Follow Eleven Pearl on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="instagramGradient" x1="3" y1="21" x2="21" y2="3"><stop stop-color="#feda75"/><stop offset=".35" stop-color="#fa7e1e"/><stop offset=".62" stop-color="#d62976"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#instagramGradient)"/><circle cx="12" cy="12" r="4" stroke="url(#instagramGradient)"/><circle cx="17.4" cy="6.6" r="1" fill="#d62976" stroke="none"/></svg></a></span></div></footer>
@@ -210,6 +198,9 @@
     };
     setTemperature(current);
     lamp.addEventListener('click', () => setTemperature(order[(order.indexOf(current) + 1) % order.length], true));
+  </script>
+  <script>
+    (()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');io.unobserve(entry.target)}}),{threshold:.1,rootMargin:'0px 0px -7%'});const reveal=(selector,image=false)=>document.querySelectorAll(selector).forEach((el,index)=>{el.classList.add('scroll-reveal');if(image)el.classList.add('image-reveal');el.style.setProperty('--reveal-delay',`${Math.min(index,5)*65}ms`);io.observe(el)});reveal('.collections,.projects,.about-preview,.details');reveal('.collection-card,.project-card,.document',true);})();
   </script>
 </body>
 </html>
