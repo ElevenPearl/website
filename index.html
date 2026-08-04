@@ -19,7 +19,7 @@
     .nav { display:flex; justify-content:space-between; align-items:center; padding:26px 0; border-bottom:1px solid var(--line); transition:border-color .5s ease; }
     .brand { display:flex; align-items:center; gap:9px; font-family:"Playfair Display",serif; font-size:22px; text-decoration:none; letter-spacing:-.03em; }
     .brand em { color:inherit; font-style:normal; font-weight:500; }
-    .brand-logo-frame { display:block; width:36px; height:58px; flex:0 0 36px; } .brand-logo { display:block; width:100%; height:100%; object-fit:contain; -webkit-mask-image:url('eleven-pearl-logo.png'); -webkit-mask-mode:luminance; -webkit-mask-size:100% 100%; -webkit-mask-repeat:no-repeat; mask-image:url('eleven-pearl-logo.png'); mask-mode:luminance; mask-size:100% 100%; mask-repeat:no-repeat; filter:var(--ep-mark-filter) drop-shadow(var(--ep-mark-shadow)); }
+    .brand-logo-frame { display:block; width:36px; height:58px; flex:0 0 36px; } .brand-logo { display:block; width:100%; height:100%; object-fit:contain; -webkit-mask-image:url('logo-imgs/eleven-pearl-logo.png'); -webkit-mask-mode:luminance; -webkit-mask-size:100% 100%; -webkit-mask-repeat:no-repeat; mask-image:url('logo-imgs/eleven-pearl-logo.png'); mask-mode:luminance; mask-size:100% 100%; mask-repeat:no-repeat; filter:var(--ep-mark-filter) drop-shadow(var(--ep-mark-shadow)); }
     .nav-links { display:flex; gap:22px; align-items:center; }
     .nav-link { color:var(--muted); font-size:12px; font-weight:600; letter-spacing:.08em; text-decoration:none; text-transform:uppercase; }
     .nav-link:hover { color:var(--wine); }
@@ -50,7 +50,7 @@
     .catalogue-group + .catalogue-group { margin-top:54px; }
     .series-brand { display:flex; align-items:center; gap:14px; margin-bottom:17px; }
     .series-logo-panel { display:grid; place-items:center; width:92px; height:76px; overflow:hidden; border:1px solid var(--line); background:rgba(255,255,255,.58); transition:border-color .5s ease; }
-    .series-logo { display:block; max-width:100%; max-height:100%; object-fit:contain; } .series-logo-panel.eleven-panel { width:92px; height:92px; border:0; background:transparent; } .series-logo.eleven { width:62px; height:90px; max-width:none; max-height:none; -webkit-mask-image:url('eleven-pearl-logo.png'); -webkit-mask-mode:luminance; -webkit-mask-size:100% 100%; -webkit-mask-repeat:no-repeat; mask-image:url('eleven-pearl-logo.png'); mask-mode:luminance; mask-size:100% 100%; mask-repeat:no-repeat; filter:var(--ep-mark-filter) drop-shadow(var(--ep-mark-shadow)); } .series-logo-panel.zivo-panel { width:92px; height:76px; border:0; background:transparent; } .series-logo.zivo { width:84px; height:84px; max-width:none; max-height:none; object-fit:contain; mix-blend-mode:multiply; clip-path:inset(12%); transform:none; }
+    .series-logo { display:block; max-width:100%; max-height:100%; object-fit:contain; } .series-logo-panel.eleven-panel { width:92px; height:92px; border:0; background:transparent; } .series-logo.eleven { width:62px; height:90px; max-width:none; max-height:none; -webkit-mask-image:url('logo-imgs/eleven-pearl-logo.png'); -webkit-mask-mode:luminance; -webkit-mask-size:100% 100%; -webkit-mask-repeat:no-repeat; mask-image:url('logo-imgs/eleven-pearl-logo.png'); mask-mode:luminance; mask-size:100% 100%; mask-repeat:no-repeat; filter:var(--ep-mark-filter) drop-shadow(var(--ep-mark-shadow)); } .series-logo-panel.zivo-panel { width:92px; height:76px; border:0; background:transparent; } .series-logo.zivo { width:84px; height:84px; max-width:none; max-height:none; object-fit:contain; mix-blend-mode:multiply; clip-path:inset(12%); transform:none; }
     .catalogue-group-title { color:var(--wine); font-size:10px; font-weight:600; letter-spacing:.19em; text-transform:uppercase; }
     .series-caption { margin-top:4px; color:var(--muted); font-size:12px; }
     .document-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line); }
@@ -84,7 +84,7 @@
 </head>
 <body>
   <header class="shell nav">
-    <a class="brand" href="#top"><span class="brand-logo-frame"><img class="brand-logo" src="eleven-pearl-logo.png" alt=""></span><span>Eleven <em>Pearl</em></span></a>
+    <a class="brand" href="#top"><span class="brand-logo-frame"><img class="brand-logo" src="logo-imgs/eleven-pearl-logo.png" alt=""></span><span>Eleven <em>Pearl</em></span></a>
     <div class="nav-links"><a class="nav-link" href="about-us.html">About Us</a><a class="nav-link" href="contact.html">Contact</a><button class="lamp-switcher" id="lampSwitcher" type="button" aria-label="Change colour temperature" title="Change colour temperature"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18h6M9.7 21h4.6M8.6 14.6A6.5 6.5 0 1 1 15.4 14.6c-.75.6-1.18 1.44-1.18 2.4H9.78c0-.96-.43-1.8-1.18-2.4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   </header>
   <div class="temperature-toast" id="temperatureToast" role="status" aria-live="polite"><strong id="temperatureName"></strong><span id="temperatureCct"></span></div>
@@ -105,19 +105,19 @@
       <div class="brand-collection-group">
         <div class="collection-brand-head"><div><p class="eyebrow">ELEVEN PEARL</p><h3>Professional Lighting Solutions</h3></div><p>Track lighting, touch controls and efficient COBs for everyday projects.</p></div>
         <div class="collection-grid eleven-grid">
-          <a class="collection-card" href="./pdfs/track-light.pdf" style="background-image:url('track-light.png')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Track<br>Lights</h3><p>Directional light for retail, residences and workspaces.</p></div></a>
-          <a class="collection-card" href="./pdfs/touch-switches.pdf" style="background-image:url('touch-switches.png')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Touch<br>Switches</h3><p>Simple control for everyday lighting scenes.</p></div></a>
-          <a class="collection-card" href="./pdfs/eco-cobs.pdf" style="background-image:url('eco-cobs.png')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>ECO COB<br>Collection</h3><p>Practical spotlighting for routine project needs.</p></div></a>
+          <a class="collection-card" href="./pdfs/track-light.pdf" style="background-image:url('images/track-light.png')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Track<br>Lights</h3><p>Directional light for retail, residences and workspaces.</p></div></a>
+          <a class="collection-card" href="./pdfs/touch-switches.pdf" style="background-image:url('images/touch-switches.png')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>Touch<br>Switches</h3><p>Simple control for everyday lighting scenes.</p></div></a>
+          <a class="collection-card" href="./pdfs/eco-cobs.pdf" style="background-image:url('images/eco-cobs.png')"><div class="collection-card-content"><small>Eleven Pearl</small><h3>ECO COB<br>Collection</h3><p>Practical spotlighting for routine project needs.</p></div></a>
         </div>
       </div>
 
       <div class="brand-collection-group zivo-group">
         <div class="collection-brand-head"><div><p class="eyebrow">ZIVO</p><h3>Premium Architectural Collection</h3></div><p>Magnetic, gypsum and architectural systems for interior-led spaces.</p></div>
         <div class="collection-grid zivo-grid">
-          <a class="collection-card" href="./pdfs/flexible-magnetic.pdf" style="background-image:url('flexible-magnetic.png')"><div class="collection-card-content"><small>Zivo</small><h3>Flexible Magnetic<br>Track</h3><p>A modular track system for changing layouts.</p></div></a>
-          <a class="collection-card" href="./pdfs/architectural-cob.pdf" style="background-image:url('architectural-light-cover.png')"><div class="collection-card-content"><small>Zivo</small><h3>Architectural<br>COB</h3><p>Integrated fixtures for focused illumination.</p></div></a>
-          <a class="collection-card" href="./pdfs/gypsum-light.pdf" style="background-image:url('gypsum.png')"><div class="collection-card-content"><small>Zivo</small><h3>Gypsum<br>Lighting</h3><p>Trimless lighting for clean ceilings and walls.</p></div></a>
-          <a class="collection-card" href="./pdfs/belt-link.pdf" style="background-image:url('belt-link.png')"><div class="collection-card-content"><small>Zivo</small><h3>Belt<br>Link</h3><p>Linear connections for structured interiors.</p></div></a>
+          <a class="collection-card" href="./pdfs/flexible-magnetic.pdf" style="background-image:url('images/flexible-magnetic.png')"><div class="collection-card-content"><small>Zivo</small><h3>Flexible Magnetic<br>Track</h3><p>A modular track system for changing layouts.</p></div></a>
+          <a class="collection-card" href="./pdfs/architectural-cob.pdf" style="background-image:url('images/architectural-light-cover.png')"><div class="collection-card-content"><small>Zivo</small><h3>Architectural<br>COB</h3><p>Integrated fixtures for focused illumination.</p></div></a>
+          <a class="collection-card" href="./pdfs/gypsum.pdf" style="background-image:url('images/gypsum.png')"><div class="collection-card-content"><small>Zivo</small><h3>Gypsum<br>Lighting</h3><p>Trimless lighting for clean ceilings and walls.</p></div></a>
+          <a class="collection-card" href="./pdfs/belt link.pdf" style="background-image:url('images/belt-link.png')"><div class="collection-card-content"><small>Zivo</small><h3>Belt<br>Link</h3><p>Linear connections for structured interiors.</p></div></a>
         </div>
       </div>
     </section>
@@ -140,7 +140,7 @@
         </div>
         <!-- Replace each href with the raw GitHub URL of its PDF file. -->
         <div class="catalogue-group">
-          <div class="series-brand"><div class="series-logo-panel eleven-panel"><img class="series-logo eleven" src="eleven-pearl-logo.png" alt="Eleven Pearl logo"></div><div><p class="catalogue-group-title">Eleven Pearl series</p><p class="series-caption">Economy lighting collection</p></div></div>
+          <div class="series-brand"><div class="series-logo-panel eleven-panel"><img class="series-logo eleven" src="logo-imgs/eleven-pearl-logo.png" alt="Eleven Pearl logo"></div><div><p class="catalogue-group-title">Eleven Pearl series</p><p class="series-caption">Economy lighting collection</p></div></div>
           <div class="document-grid">
             <a class="document" href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/raw/main/track-light.pdf" target="_blank" rel="noopener"><span class="doc-number">01</span><h3>Track<br>Light</h3><p>Explore the Track Light collection.</p><span class="open">Open PDF <span>↗</span></span></a>
             <a class="document" href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/raw/main/touch-switches.pdf" target="_blank" rel="noopener"><span class="doc-number">02</span><h3>Touch<br>Switches</h3><p>Explore the Touch Switches collection.</p><span class="open">Open PDF <span>↗</span></span></a>
@@ -148,7 +148,7 @@
           </div>
         </div>
         <div class="catalogue-group">
-          <div class="series-brand"><div class="series-logo-panel zivo-panel"><img class="series-logo zivo" src="zivo-logo.png" alt="Zivo logo"></div><div><p class="catalogue-group-title">Zivo series</p><p class="series-caption">Architectural lighting collection</p></div></div>
+          <div class="series-brand"><div class="series-logo-panel zivo-panel"><img class="series-logo zivo" src="logo-imgs/zivo-logo.png" alt="Zivo logo"></div><div><p class="catalogue-group-title">Zivo series</p><p class="series-caption">Architectural lighting collection</p></div></div>
           <div class="document-grid">
             <a class="document" href="./pdfs/flexible-magnetic.pdf"><span class="doc-number">01</span><h3>Flexible<br>Magnetic</h3><p>Explore the Flexible Magnetic collection.</p><span class="open">Open PDF <span>↗</span></span></a>
             <a class="document" href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/raw/main/belt-link.pdf" target="_blank" rel="noopener"><span class="doc-number">02</span><h3>Belt<br>Link</h3><p>Explore the Belt Link collection.</p><span class="open">Open PDF <span>↗</span></span></a>
