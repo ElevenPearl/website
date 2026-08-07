@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eleven Pearl — projects across cinemas, homes, offices, sports arenas and buildings.">
+  <title>Projects — Eleven Pearl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root { --ivory:#fcfcfa; --paper:#fff; --ink:#292b29; --muted:#696c68; --wine:#555954; --signature-wine:#681d2a; --wine-hover:#3e423e; --gold:#9f9d92; --line:rgba(41,43,41,.16); --surface-hover:#f5f6f4; --button-text:#fff; --lamp-glow:rgba(171,187,187,.48); --ep-mark-filter:brightness(.9) contrast(1.12); --ep-mark-shadow:0 0 0 transparent; }
+    * { box-sizing:border-box; margin:0; }
+    html { scroll-behavior:smooth; }
+    body { min-width:320px; background:var(--ivory); color:var(--ink); font-family:"DM Sans",sans-serif; -webkit-font-smoothing:antialiased; transition:background-color .5s ease, color .5s ease; }
+    a { color:inherit; }
+    .shell { width:min(1120px, calc(100% - 48px)); margin:auto; }
+    .eyebrow { color:var(--wine); font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; }
+    .nav { display:flex; justify-content:space-between; align-items:center; padding:26px 0; border-bottom:1px solid var(--line); transition:border-color .5s ease; }
+    .brand { display:flex; align-items:center; gap:9px; font-family:"Playfair Display",serif; font-size:22px; text-decoration:none; letter-spacing:-.03em; }
+    .brand em { color:inherit; font-style:normal; font-weight:500; }
+    .brand-logo-frame { display:block; width:36px; height:58px; flex:0 0 36px; } .brand-logo { display:block; width:100%; height:100%; object-fit:contain; -webkit-mask-image:url('logo-imgs/eleven-pearl-logo.png'); -webkit-mask-mode:luminance; -webkit-mask-size:100% 100%; -webkit-mask-repeat:no-repeat; mask-image:url('logo-imgs/eleven-pearl-logo.png'); mask-mode:luminance; mask-size:100% 100%; mask-repeat:no-repeat; filter:var(--ep-mark-filter) drop-shadow(0 0 1px rgba(20,18,15,.92)) drop-shadow(0 1px 3px rgba(255,255,255,.48)); }
+    .nav-links { display:flex; gap:22px; align-items:center; }
+    .nav-link { color:var(--muted); font-size:12px; font-weight:600; letter-spacing:.08em; text-decoration:none; text-transform:uppercase; }
+    .nav-link:hover { color:var(--wine); }
+    .lamp-switcher { display:grid; place-items:center; width:35px; height:35px; padding:5px; border:0; background:transparent; color:var(--ink); cursor:pointer; }
+    .lamp-switcher:hover svg { transform:translateY(-2px); filter:drop-shadow(0 0 8px var(--lamp-glow)); } .lamp-switcher svg { width:25px; height:25px; transition:filter .4s,transform .35s; } .lamp-switcher:focus-visible { outline:2px solid var(--wine); outline-offset:3px; }
+    .temperature-toast { position:fixed; z-index:10; top:92px; left:50%; display:flex; align-items:baseline; gap:9px; padding:12px 16px; border:1px solid var(--line); background:var(--paper); color:var(--ink); box-shadow:0 10px 28px rgba(37,33,29,.12); font-size:11px; opacity:0; pointer-events:none; transform:translate(-50%,-8px); transition:opacity .35s ease, transform .35s ease; }
+    .temperature-toast.show { opacity:1; transform:translate(-50%,0); } .temperature-toast strong { font-weight:600; letter-spacing:.08em; text-transform:uppercase; } .temperature-toast span { color:var(--muted); }
+    h1, h2, h3 { font-family:"Playfair Display",serif; font-weight:500; letter-spacing:-.04em; }
+    .page-head { padding:80px 0 0; }
+    .page-head h1 { margin:14px 0 0; font-size:clamp(44px,6vw,74px); line-height:1; }
+    .page-head p { max-width:520px; margin-top:18px; color:var(--muted); font-size:15px; line-height:1.7; }
+    .placeholder-note { display:inline-block; margin-top:22px; padding:9px 14px; border:1px solid var(--line); background:var(--surface-hover); color:var(--muted); font-size:12px; line-height:1.6; }
+    .filter-bar { display:flex; flex-wrap:wrap; gap:10px; margin:44px 0 0; padding-bottom:32px; border-bottom:1px solid var(--line); }
+    .filter-btn { border:1px solid var(--line); background:transparent; color:var(--muted); padding:10px 18px; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s,color .2s,border-color .2s; }
+    .filter-btn:hover { border-color:var(--wine); color:var(--wine); }
+    .filter-btn.active { background:var(--ink); border-color:var(--ink); color:var(--ivory); }
+    .project-grid-all { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:42px 0 110px; }
+    .project-tile { position:relative; min-height:340px; overflow:hidden; isolation:isolate; color:#fffdf6; text-decoration:none; background:#3a3027 center/cover; display:block; }
+    .project-tile::before { content:""; position:absolute; inset:0; z-index:-1; background:inherit; transition:transform .6s cubic-bezier(.2,.6,.2,1); }
+    .project-tile::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,transparent 40%,rgba(17,13,9,.78)); }
+    .project-tile:hover::before { transform:scale(1.045); }
+    .project-tile-content { position:absolute; left:20px; right:20px; bottom:18px; }
+    .project-tile-content small { display:block; color:#ead4a5; font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px; }
+    .project-tile-content h3 { font-size:22px; line-height:1.1; }
+    .project-tile-content span { display:block; margin-top:6px; color:rgba(255,253,246,.8); font-size:12px; }
+    .project-tile[hidden] { display:none; }
+    .empty-state { display:none; padding:60px 0; text-align:center; color:var(--muted); font-size:14px; }
+    .empty-state.show { display:block; }
+    footer { padding:28px 0 96px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; letter-spacing:.04em; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; }
+    .instagram-link { display:inline-grid; place-items:center; width:23px; height:23px; margin-left:9px; text-decoration:none; vertical-align:middle; } .instagram-link svg { width:21px; height:21px; fill:none; stroke-width:1.8; }
+    .whatsapp { position:fixed; z-index:8; right:24px; bottom:24px; display:flex; align-items:center; gap:10px; padding:13px 16px; border-radius:999px; background:#1f7a54; color:#fff; box-shadow:0 10px 24px rgba(20,71,49,.24); font-size:11px; font-weight:600; letter-spacing:.08em; text-decoration:none; text-transform:uppercase; }
+    .whatsapp:hover { background:#176343; }
+    .whatsapp svg { width:18px; height:18px; fill:currentColor; }
+    @media (max-width:900px) { .project-grid-all { grid-template-columns:repeat(2,1fr); } }
+    .project-tile[data-gallery] { cursor:zoom-in; }
+    .gallery-modal { position:fixed; inset:0; z-index:50; display:flex; align-items:center; justify-content:center; background:rgba(15,12,9,.9); padding:24px; }
+    .gallery-modal[hidden] { display:none; }
+    .gallery-modal img { max-width:min(920px,92vw); max-height:78vh; object-fit:contain; }
+    .gallery-close { position:absolute; top:20px; right:24px; width:38px; height:38px; border:1px solid rgba(255,253,246,.5); background:transparent; color:#fffdf6; font-size:20px; line-height:1; cursor:pointer; }
+    .gallery-nav { position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border:1px solid rgba(255,253,246,.5); background:rgba(0,0,0,.3); color:#fffdf6; font-size:20px; cursor:pointer; }
+    .gallery-prev { left:16px; } .gallery-next { right:16px; }
+    .gallery-caption { position:absolute; bottom:24px; left:0; right:0; text-align:center; color:#fffdf6; font-size:12px; letter-spacing:.06em; }
+    @media (max-width:680px) { .shell { width:min(100% - 36px,1120px); } .page-head { padding:60px 0 0; } .project-grid-all { grid-template-columns:1fr; } .footer-inner { display:block; } .footer-inner span:last-child { display:block; margin-top:8px; } }
+    @media (max-width:480px) { .nav { padding:14px 0; } .brand { gap:6px; font-size:19px; } .brand-logo-frame { width:31px; height:48px; flex-basis:31px; } .nav-links { gap:10px; } .nav-link { font-size:9px; letter-spacing:.05em; } .lamp-switcher { width:30px; height:30px; } .whatsapp { right:16px; bottom:16px; padding:13px; } .whatsapp span { display:none; } }
+  </style>
+</head>
+<body>
+  <header class="shell nav">
+    <a class="brand" href="index.html#top"><span class="brand-logo-frame"><img class="brand-logo" src="logo-imgs/eleven-pearl-logo.png" alt="" width="36" height="58" loading="lazy" decoding="async"></span><span>Eleven <em>Pearl</em></span></a>
+    <div class="nav-links"><a class="nav-link" href="about-us.html">About Us</a><a class="nav-link" href="contact.html">Contact</a><button class="lamp-switcher" id="lampSwitcher" type="button" aria-label="Change colour temperature" title="Change colour temperature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M9 18h6M9.7 21h4.6M8 14.8A6.5 6.5 0 1 1 16 14.8c-1.1 1-1.4 1.9-1.4 3.2H9.4c0-1.3-.3-2.2-1.4-3.2Z"/><path d="M12 2V.5M4.9 4.9 3.8 3.8M19.1 4.9l1.1-1.1"/></svg></button></div>
+  </header>
+  <div class="temperature-toast" id="temperatureToast" role="status" aria-live="polite"><strong id="temperatureName"></strong><span id="temperatureCct"></span></div>
+
+  <main>
+    <section class="shell page-head">
+      <p class="eyebrow">Projects</p>
+      <h1>Light in context.</h1>
+      <p>A closer look at Eleven Pearl and Zivo installations across cinemas, homes, offices, sports arenas and buildings.</p>
+
+      <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filter projects by category">
+        <button class="filter-btn active" data-filter="all" type="button">All</button>
+        <button class="filter-btn" data-filter="cinema" type="button">Cinema</button>
+        <button class="filter-btn" data-filter="home" type="button">Home</button>
+        <button class="filter-btn" data-filter="office" type="button">Office</button>
+        <button class="filter-btn" data-filter="sports-arena" type="button">Sports Arena</button>
+        <button class="filter-btn" data-filter="building" type="button">Building</button>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="project-grid-all" id="projectGrid">
+        <a class="project-tile" data-category="cinema" data-gallery='["images/projects/cinema-cinezza-1.jpg","images/projects/cinema-cinezza-2.jpg","images/projects/cinema-cinezza-3.jpg"]' style="background-image:url('images/projects/cinema-cinezza-1.jpg')"><div class="project-tile-content"><small>Cinema</small><h3>Cinezza Multiplex</h3><span>Mota Varachha, Surat</span></div></a>
+
+        <a class="project-tile" data-category="home" style="background-image:url('https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Home</small><h3>Residence 01</h3><span>Location — placeholder, Surat</span></div></a>
+        <a class="project-tile" data-category="home" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Home</small><h3>Residence 02</h3><span>Location — placeholder, Vadodara</span></div></a>
+        <a class="project-tile" data-category="home" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Home</small><h3>Residence 03</h3><span>Location — placeholder, Ahmedabad</span></div></a>
+
+        <a class="project-tile" data-category="office" style="background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Office</small><h3>Workspace 01</h3><span>Location — placeholder, Surat</span></div></a>
+        <a class="project-tile" data-category="office" style="background-image:url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Office</small><h3>Workspace 02</h3><span>Location — placeholder, Ahmedabad</span></div></a>
+        <a class="project-tile" data-category="office" style="background-image:url('https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Office</small><h3>Workspace 03</h3><span>Location — placeholder, Vadodara</span></div></a>
+
+        <a class="project-tile" data-category="sports-arena" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Sports Arena</small><h3>Indoor Arena</h3><span>Location — placeholder, Surat</span></div></a>
+
+        <a class="project-tile" data-category="building" style="background-image:url('https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=900&q=82')"><div class="project-tile-content"><small>Building</small><h3>Facade Project</h3><span>Location — placeholder, Surat</span></div></a>
+      </div>
+      <p class="empty-state" id="emptyState">No projects in this category yet.</p>
+    </section>
+  </main>
+
+  <div class="gallery-modal" id="galleryModal" hidden role="dialog" aria-modal="true" aria-label="Project photo gallery">
+    <button class="gallery-close" id="galleryClose" type="button" aria-label="Close gallery">×</button>
+    <button class="gallery-nav gallery-prev" id="galleryPrev" type="button" aria-label="Previous photo">‹</button>
+    <img id="galleryImage" src="" alt="">
+    <button class="gallery-nav gallery-next" id="galleryNext" type="button" aria-label="Next photo">›</button>
+    <p class="gallery-caption" id="galleryCaption"></p>
+  </div>
+
+  <footer><div class="shell footer-inner"><span>© 2026 Eleven Pearl</span><span>Considered lighting for considered spaces. <a class="instagram-link" href="https://www.instagram.com/eleven._pearl/" target="_blank" rel="noopener" aria-label="Follow Eleven Pearl on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#d62976"/><circle cx="12" cy="12" r="4" stroke="#fa7e1e"/></svg></a></span></div></footer>
+  <a class="whatsapp" href="https://wa.me/919898614926?text=Hello%20Eleven%20Pearl%2C%20I%20would%20like%20to%20know%20more%20about%20your%20lighting%20solutions." target="_blank" rel="noopener" aria-label="Chat with Eleven Pearl on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.5 5.9L.2 23.6l6.1-1.6a11.8 11.8 0 0 0 5.7 1.5h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.1-3.4-8.2ZM12.1 21.5c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6 1 1-3.5-.2-.4a9.8 9.8 0 1 1 8.2 4.5Zm5.4-7.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.3-.7.1a8.3 8.3 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.4 0-.5.1-.7l.5-.5c.2-.2.2-.3.3-.5s0-.4 0-.5l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.1 3 .2.3.3.5c1.5 2.3 3.5 4 5.9 4.9.6.2 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.8-.7 2-1.4s.3-1.3.2-1.4-.3-.2-.6-.4Z"/></svg><span>WhatsApp us</span></a>
+
+  <script>
+    const root = document.documentElement;
+    const lamp = document.getElementById('lampSwitcher');
+    const toast = document.getElementById('temperatureToast');
+    const toastName = document.getElementById('temperatureName');
+    const toastCct = document.getElementById('temperatureCct');
+    const temperatures = {
+      warm: { label:'Warm white', cct:'3000K', ivory:'#f2dfb8', paper:'#f2dfb8', ink:'#332514', muted:'#7a6540', wine:'#75502a', wineHover:'#593b1d', gold:'#b48335', line:'rgba(51,37,20,.18)', hover:'#e7c577', lampGlow:'rgba(223,165,53,.56)', markFilter:'brightness(.78) contrast(1.32) saturate(1.15)', markShadow:'0 0 1px rgba(80,49,13,.92)', buttonText:'#fffaf0' },
+      natural: { label:'Natural white', cct:'4000K', ivory:'#f5e8c9', paper:'#f5e8c9', ink:'#332c20', muted:'#76664c', wine:'#80603a', wineHover:'#624524', gold:'#b58d4a', line:'rgba(51,44,32,.16)', hover:'#ead6a7', lampGlow:'rgba(216,180,94,.46)', markFilter:'brightness(.9) contrast(1.14)', markShadow:'0 0 0 transparent', buttonText:'#fffaf0' },
+      cool: { label:'Cool white', cct:'6000K', ivory:'#fcfcfa', paper:'#fff', ink:'#292b29', muted:'#696c68', wine:'#555954', wineHover:'#3e423e', gold:'#9f9d92', line:'rgba(41,43,41,.16)', hover:'#f0f2f0', lampGlow:'rgba(171,187,187,.42)', markFilter:'brightness(.9) contrast(1.12)', markShadow:'0 0 0 transparent', buttonText:'#ffffff' }
+    };
+    const order = Object.keys(temperatures);
+    let current = localStorage.getItem('elevenPearlTemperatureV2') || 'cool';
+    if (!temperatures[current]) current = 'cool';
+    let toastTimer;
+    const setTemperature = (name, announce = false) => {
+      const theme = temperatures[name];
+      current = name;
+      root.style.setProperty('--ivory', theme.ivory);
+      root.style.setProperty('--paper', theme.paper);
+      root.style.setProperty('--ink', theme.ink);
+      root.style.setProperty('--muted', theme.muted);
+      root.style.setProperty('--gold', theme.gold);
+      root.style.setProperty('--wine', theme.wine);
+      root.style.setProperty('--wine-hover', theme.wineHover);
+      root.style.setProperty('--line', theme.line);
+      root.style.setProperty('--surface-hover', theme.hover);
+      root.style.setProperty('--button-text', theme.buttonText);
+      root.style.setProperty('--lamp-glow', theme.lampGlow);
+      root.style.setProperty('--ep-mark-filter', theme.markFilter);
+      root.style.setProperty('--ep-mark-shadow', theme.markShadow);
+      localStorage.setItem('elevenPearlTemperatureV2', name);
+      if (announce) { toastName.textContent = theme.label; toastCct.textContent = theme.cct; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 2200); }
+    };
+    setTemperature(current);
+    lamp.addEventListener('click', () => setTemperature(order[(order.indexOf(current) + 1) % order.length], true));
+  </script>
+  <script>
+    const filterBar = document.getElementById('filterBar');
+    const tiles = Array.from(document.querySelectorAll('.project-tile'));
+    const emptyState = document.getElementById('emptyState');
+    function applyFilter(category) {
+      let visibleCount = 0;
+      tiles.forEach(tile => {
+        const match = category === 'all' || tile.dataset.category === category;
+        tile.hidden = !match;
+        if (match) visibleCount++;
+      });
+      emptyState.classList.toggle('show', visibleCount === 0);
+      filterBar.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.filter === category));
+    }
+    filterBar.addEventListener('click', event => {
+      const btn = event.target.closest('.filter-btn');
+      if (!btn) return;
+      applyFilter(btn.dataset.filter);
+      history.replaceState(null, '', btn.dataset.filter === 'all' ? location.pathname : '#' + btn.dataset.filter);
+    });
+    const initial = location.hash.replace('#', '') || 'all';
+    const validFilters = Array.from(filterBar.querySelectorAll('.filter-btn')).map(b => b.dataset.filter);
+    applyFilter(validFilters.includes(initial) ? initial : 'all');
+  </script>
+  <script>
+    const modal = document.getElementById('galleryModal');
+    const modalImage = document.getElementById('galleryImage');
+    const modalCaption = document.getElementById('galleryCaption');
+    let galleryImages = [];
+    let galleryIndex = 0;
+    function showGalleryImage() {
+      modalImage.src = galleryImages[galleryIndex];
+      modalCaption.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
+    }
+    function openGallery(images) {
+      galleryImages = images;
+      galleryIndex = 0;
+      showGalleryImage();
+      modal.hidden = false;
+    }
+    document.querySelectorAll('.project-tile[data-gallery]').forEach(tile => {
+      tile.addEventListener('click', event => {
+        event.preventDefault();
+        openGallery(JSON.parse(tile.dataset.gallery));
+      });
+    });
+    document.getElementById('galleryClose').addEventListener('click', () => { modal.hidden = true; });
+    document.getElementById('galleryPrev').addEventListener('click', () => { galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length; showGalleryImage(); });
+    document.getElementById('galleryNext').addEventListener('click', () => { galleryIndex = (galleryIndex + 1) % galleryImages.length; showGalleryImage(); });
+    modal.addEventListener('click', event => { if (event.target === modal) modal.hidden = true; });
+    document.addEventListener('keydown', event => {
+      if (modal.hidden) return;
+      if (event.key === 'Escape') modal.hidden = true;
+      if (event.key === 'ArrowLeft') document.getElementById('galleryPrev').click();
+      if (event.key === 'ArrowRight') document.getElementById('galleryNext').click();
+    });
+  </script>
+</body>
+</html>
