@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f4f1e9">
   <title>Contact — Eleven Pearl</title>
   <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#ffffff">
@@ -115,6 +114,40 @@
 .lamp-switcher:hover svg{
   transform:translateY(-2px);
   filter:drop-shadow(0 0 8px var(--lamp-glow));
+}
+    @media (max-width:480px){
+  .nav{
+    padding:14px 0;
+  }
+
+  .brand{
+    gap:6px;
+    font-size:19px;
+  }
+
+  .brand-logo-frame{
+    width:31px;
+    height:48px;
+    flex-basis:31px;
+  }
+
+  .brand-logo{
+    min-width:31px;
+  }
+
+  .nav-links{
+    gap:10px;
+  }
+
+  .nav-link{
+    font-size:9px;
+    letter-spacing:.05em;
+  }
+
+  .lamp-switcher{
+    width:30px;
+    height:30px;
+  }
 }
   </style>
 </head>
