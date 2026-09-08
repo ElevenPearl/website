@@ -124,7 +124,7 @@
     </section>
 
     <section class="projects" id="projects"><div class="shell"><p class="eyebrow">Projects</p><h2>Light in context.</h2><div class="project-grid">
-      <a class="project-card" href="projects.html#cinema" data-background="images/projects/cinema-cinezza-1.webp"><span>Cinema</span></a>
+      <a class="project-card" href="projects.html#cinema" data-background="images/projects/cinema-cinezza-1.jpg"><span>Cinema</span></a>
       <a class="project-card" href="projects.html#home" data-background="https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=1000&q=82"><span>Home</span></a>
       <a class="project-card" href="projects.html#office" data-background="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=82"><span>Office</span></a>
       <a class="project-card" href="projects.html#sports-arena" data-background="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=82"><span>Sports Arena</span></a>
@@ -176,7 +176,8 @@
       cool: { label:'Cool white', cct:'6000K', ivory:'#fcfcfa', paper:'#fff', ink:'#292b29', muted:'#696c68', wine:'#555954', wineHover:'#3e423e', gold:'#9f9d92', line:'rgba(41,43,41,.16)', hover:'#f0f2f0', lampGlow:'rgba(171,187,187,.42)', markFilter:'brightness(.9) contrast(1.12)', markShadow:'0 0 0 transparent', buttonText:'#ffffff' }
     };
     const order = Object.keys(temperatures);
-    let current = 'cool';
+    let current = localStorage.getItem('elevenPearlTemperatureV2');
+    if (!temperatures[current]) current = 'cool';
     let toastTimer;
     const setTemperature = (name, announce = false) => {
       const theme = temperatures[name];
